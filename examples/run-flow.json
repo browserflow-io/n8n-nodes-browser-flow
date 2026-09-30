@@ -1,0 +1,33 @@
+{
+  "name": "Run a Browserflow flow",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "manual",
+      "name": "When clicking Execute workflow",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [0, 0]
+    },
+    {
+      "parameters": {
+        "operation": "runFlow",
+        "flowId": "",
+        "inputs": { "mappingMode": "defineBelow", "value": {} },
+        "options": {}
+      },
+      "id": "browserflow",
+      "name": "Browserflow",
+      "type": "n8n-nodes-browserflow-studio.browserflow",
+      "typeVersion": 1,
+      "position": [240, 0]
+    }
+  ],
+  "connections": {
+    "When clicking Execute workflow": {
+      "main": [[{ "node": "Browserflow", "type": "main", "index": 0 }]]
+    }
+  },
+  "settings": {},
+  "active": false
+}

@@ -1,0 +1,63 @@
+{
+  "name": "n8n-nodes-browserflow-studio",
+  "version": "1.0.0",
+  "description": "Run your published Browserflow automations from n8n, with dynamic inputs and structured output.",
+  "keywords": [
+    "n8n-community-node-package",
+    "browserflow",
+    "automation",
+    "scraping"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/browserflow-io/n8n-nodes-browserflow-studio#readme",
+  "author": {
+    "name": "Browserflow",
+    "email": "hello@browserflow.io"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/browserflow-io/n8n-nodes-browserflow-studio.git"
+  },
+  "engines": {
+    "node": ">=22.16"
+  },
+  "scripts": {
+    "build": "n8n-node build",
+    "dev": "n8n-node dev",
+    "lint": "n8n-node lint",
+    "lint:fix": "n8n-node lint --fix",
+    "test": "npm run build && node --test test/*.test.cjs",
+    "prepublishOnly": "npm run build && npm run lint",
+    "check:package": "node scripts/check-package.mjs",
+    "check": "npm test && npm run lint && npm run check:package"
+  },
+  "files": [
+    "dist/nodes",
+    "dist/credentials",
+    "examples"
+  ],
+  "n8n": {
+    "n8nNodesApiVersion": 1,
+    "credentials": [
+      "dist/credentials/BrowserflowStudioOAuth2Api.credentials.js"
+    ],
+    "nodes": [
+      "dist/nodes/Browserflow/Browserflow.node.js"
+    ],
+    "strict": true
+  },
+  "devDependencies": {
+    "@n8n/node-cli": "0.48.5",
+    "n8n-workflow": "2.16.0",
+    "typescript": "~5.9.2"
+  },
+  "peerDependencies": {
+    "n8n-workflow": "*"
+  },
+  "bugs": {
+    "url": "https://github.com/browserflow-io/n8n-nodes-browserflow-studio/issues"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
