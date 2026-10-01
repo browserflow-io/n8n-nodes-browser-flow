@@ -9,7 +9,7 @@ const [packed] = JSON.parse(
   }),
 );
 const files = new Set(packed.files.map(({ path }) => path));
-assert.equal(pkg.name, "n8n-nodes-browserflow-studio");
+assert.equal(pkg.name, "n8n-nodes-browser-flow");
 assert.equal(pkg.license, "MIT");
 assert.equal(pkg.n8n.strict, true);
 assert.equal(Object.keys(pkg.dependencies ?? {}).length, 0);

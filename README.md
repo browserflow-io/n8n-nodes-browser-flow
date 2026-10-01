@@ -8,7 +8,7 @@ This package connects to the current Browserflow platform at
 `n8n-nodes-browserflow` package for the earlier platform and LinkedIn operations.
 It does not replace or migrate those nodes or credentials.
 
-Package: `n8n-nodes-browserflow-studio`. The node appears as **Browserflow**.
+Package: `n8n-nodes-browser-flow`. The node appears as **Browserflow**.
 This initial version is being prepared for publication and n8n verification;
 availability in n8n Cloud is not yet established.
 
@@ -24,7 +24,7 @@ availability in n8n Cloud is not yet established.
 
 ## Install
 
-Once the package is published, install `n8n-nodes-browserflow-studio` through
+Once the package is published, install `n8n-nodes-browser-flow` through
 **Settings → Community Nodes** on self-hosted n8n. For development, run
 `npm ci` and `npm run dev` from this repository.
 
