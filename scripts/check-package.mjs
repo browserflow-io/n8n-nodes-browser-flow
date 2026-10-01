@@ -40,7 +40,7 @@ assert.equal(example.active, false);
 assert.ok(example.nodes.every((node) => !node.credentials));
 assert.ok(
   example.nodes.some(
-    (node) => node.type === `${pkg.name}.browserflow` && node.typeVersion === 1,
+    (node) => node.type === `${pkg.name}.browserflow` && node.typeVersion === 1.1,
   ),
 );
 console.log(
