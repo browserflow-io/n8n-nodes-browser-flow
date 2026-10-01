@@ -3,6 +3,13 @@
 Prepared on 30 September 2026. Package: **@browserflow/n8n-nodes-browser-flow@1.0.0**.
 Repository: **browserflow-io/n8n-nodes-browser-flow**. Display name: **Browserflow**.
 
+## Smaller batches — 1.1.1
+
+Version 1.1.1 lowers the maximum Limit to 100 items per list per execution.
+Offset remains a skip index up to 250000 so subsequent batches can use 100, 200,
+etc. Values above 100 are rejected before starting a run. The matching backend
+release also caps recorded defaults at 100 when Limit is omitted.
+
 ## List batching — 1.1.0
 
 Version 1.1.0 adds optional **Limit** and **Offset** controls under Options.

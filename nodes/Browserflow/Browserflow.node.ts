@@ -230,7 +230,7 @@ export class Browserflow implements INodeType {
             name: "limit",
             type: "number",
             default: 50,
-            typeOptions: { minValue: 1, maxValue: 5000, numberPrecision: 0 },
+            typeOptions: { minValue: 1, maxValue: 100, numberPrecision: 0 },
             description: "Max number of results to return",
           },
           {
@@ -275,7 +275,7 @@ export class Browserflow implements INodeType {
         ) as IDataObject | null;
         const runWindow: IDataObject = {};
         for (const [name, min, max] of [
-          ["limit", 1, 5000],
+          ["limit", 1, 100],
           ["offset", 0, 250000],
         ] as const) {
           const value = this.getNodeParameter(`options.${name}`, i, null);

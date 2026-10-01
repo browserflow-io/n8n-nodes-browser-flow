@@ -254,11 +254,11 @@ test("maps batch options separately from website inputs and rejects invalid wind
   await node.execute.call(defaults);
   assert.equal(Object.hasOwn(defaults.calls[0].body, "limit"), false);
   assert.equal(Object.hasOwn(defaults.calls[0].body, "offset"), false);
-  const firstBatch = context({ "options.limit": 5000, "options.offset": 0 });
+  const firstBatch = context({ "options.limit": 100, "options.offset": 0 });
   await node.execute.call(firstBatch);
   assert.deepEqual(firstBatch.calls[0].body, {
     inputs: { query: "test", enabled: false, limit: 0 },
-    limit: 5000,
+    limit: 100,
     offset: 0,
   });
   const offsetOnly = context({ "options.offset": 250000 });
@@ -268,7 +268,7 @@ test("maps batch options separately from website inputs and rejects invalid wind
   for (const [name, value] of [
     ["limit", 0],
     ["limit", 1.5],
-    ["limit", 5001],
+    ["limit", 101],
     ["limit", "25"],
     ["limit", NaN],
     ["offset", -1],
