@@ -1,7 +1,8 @@
 # Browserflow for n8n
 
-Run your published Browserflow automations, map their inputs, and use structured
-results in the next step of your n8n workflow.
+Scrape leads, collect market data, and automate sales tasks with Browserflow.
+Run your published browser flows from n8n and use their structured results in
+the next step of your workflow.
 
 This package connects to the current Browserflow platform at
 [browserflow.io](https://browserflow.io). It is separate from the existing
@@ -9,8 +10,8 @@ This package connects to the current Browserflow platform at
 It does not replace or migrate those nodes or credentials.
 
 Package: `@browserflow/n8n-nodes-browser-flow`. The node appears as **Browserflow**.
-This initial version is being prepared for publication and n8n verification;
-availability in n8n Cloud is not yet established.
+The package is published on npm. n8n verification is pending; availability in
+n8n Cloud is not yet established.
 
 ## Requirements
 
@@ -24,7 +25,7 @@ availability in n8n Cloud is not yet established.
 
 ## Install
 
-Once the package is published, install `@browserflow/n8n-nodes-browser-flow` through
+Install `@browserflow/n8n-nodes-browser-flow` through
 **Settings → Community Nodes** on self-hosted n8n. For development, run
 `npm ci` and `npm run dev` from this repository.
 

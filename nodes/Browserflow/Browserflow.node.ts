@@ -177,7 +177,7 @@ export class Browserflow implements INodeType {
     icon: { light: "file:browserflow.svg", dark: "file:browserflow.dark.svg" },
     group: ["transform"],
     version: 1,
-    description: "Run your published Browserflow automations",
+    description: "Scrape leads, collect market data, and automate sales tasks",
     subtitle: "Run Flow",
     defaults: { name: "Browserflow" },
     inputs: [NodeConnectionTypes.Main],

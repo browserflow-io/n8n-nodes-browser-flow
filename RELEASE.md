@@ -3,6 +3,20 @@
 Prepared on 30 September 2026. Package: **@browserflow/n8n-nodes-browser-flow@1.0.0**.
 Repository: **browserflow-io/n8n-nodes-browser-flow**. Display name: **Browserflow**.
 
+## Copy update — 1.0.1
+
+Version 1.0.1 changes the node description to “Scrape leads, collect market data,
+and automate sales tasks”, with matching npm metadata and README introduction.
+Node behavior, credentials and saved workflow identifiers are unchanged.
+Publish this version with the existing guarded workflow after package checks.
+
+Version 1.0.0 was published from `38f480c` with GitHub Actions provenance on
+1 October 2026 (run `36861580497`). The official n8n registry scanner 0.38.0 and
+a disposable n8n 2.39.8 test of the downloaded registry archive passed, including
+PKCE, fixture browser output, refresh and revocation. These results supersede
+the earlier prepublication status below. Hosted registry-version testing,
+toolchain advisory review and Creator Portal submission remain separate gates.
+
 ## Evidence and remaining gates
 
 - Local package build and nine behavioral tests pass; strict n8n lint and package
