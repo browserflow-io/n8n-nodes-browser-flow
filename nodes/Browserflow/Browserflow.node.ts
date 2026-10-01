@@ -12,6 +12,7 @@ import type {
   INodeExecutionData,
   INodeType,
   INodeTypeDescription,
+  INodeListSearchResult,
   JsonObject,
   ResourceMapperFields,
 } from "n8n-workflow";
@@ -143,10 +144,36 @@ async function getFlows(this: ILoadOptionsFunctions) {
     .sort((a, b) => a.name.localeCompare(b.name));
 }
 
+async function searchFlows(
+  this: ILoadOptionsFunctions,
+  filter?: string,
+): Promise<INodeListSearchResult> {
+  const options = await getFlows.call(this);
+  return {
+    results: options.filter(
+      (flow) =>
+        flow.value &&
+        (!filter || flow.name.toLowerCase().includes(filter.toLowerCase())),
+    ),
+  };
+}
+
+function flowIdValue(value: unknown): string {
+  if (typeof value === "string") return value;
+  if (
+    value &&
+    typeof value === "object" &&
+    "value" in value &&
+    typeof value.value === "string"
+  )
+    return value.value;
+  return "";
+}
+
 async function getInputFields(
   this: ILoadOptionsFunctions,
 ): Promise<ResourceMapperFields> {
-  const flowId = this.getNodeParameter("flowId", "") as string;
+  const flowId = flowIdValue(this.getNodeParameter("flowId", ""));
   if (!flowId) return { fields: [] };
   const flow = (await loadMetadata(
     this,
@@ -176,7 +203,7 @@ export class Browserflow implements INodeType {
     name: "browserflow",
     icon: { light: "file:browserflow.svg", dark: "file:browserflow.dark.svg" },
     group: ["transform"],
-    version: 1,
+    version: [1, 1.1],
     description: "Scrape leads, collect market data, and automate sales tasks",
     subtitle: "Run Flow",
     defaults: { name: "Browserflow" },
@@ -196,9 +223,42 @@ export class Browserflow implements INodeType {
         type: "options",
         default: "",
         required: true,
+        displayOptions: { show: { "@version": [1] } },
         typeOptions: { loadOptionsMethod: "getFlows" },
         description:
           'Choose from the list, or specify an ID using an <a href="https://docs.n8n.io/code/expressions/">expression</a>',
+      },
+      {
+        displayName: "Flow",
+        name: "flowId",
+        type: "resourceLocator",
+        default: { mode: "list", value: "" },
+        required: true,
+        displayOptions: { show: { "@version": [1.1] } },
+        modes: [
+          {
+            displayName: "From List",
+            name: "list",
+            type: "list",
+            typeOptions: { searchListMethod: "searchFlows", searchable: true },
+          },
+          {
+            displayName: "By ID",
+            name: "id",
+            type: "string",
+            placeholder: "e.g. flow-123",
+            validation: [
+              {
+                type: "regex",
+                properties: {
+                  regex: "^[a-zA-Z0-9_-]+$",
+                  errorMessage: "Enter a valid published flow ID.",
+                },
+              },
+            ],
+          },
+        ],
+        description: "Published Browserflow flow to run",
       },
       {
         displayName: "Inputs",
@@ -255,13 +315,17 @@ export class Browserflow implements INodeType {
       },
     ],
   };
-  methods = { loadOptions: { getFlows }, resourceMapping: { getInputFields } };
+  methods = {
+    loadOptions: { getFlows },
+    listSearch: { searchFlows },
+    resourceMapping: { getInputFields },
+  };
 
   async execute(this: IExecuteFunctions): Promise<INodeExecutionData[][]> {
     const output: INodeExecutionData[] = [];
     for (let i = 0; i < this.getInputData().length; i++) {
       try {
-        const flowId = this.getNodeParameter("flowId", i) as string;
+        const flowId = flowIdValue(this.getNodeParameter("flowId", i));
         if (!flowId || !/^[\w-]+$/.test(flowId))
           throw new NodeOperationError(
             this.getNode(),

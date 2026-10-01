@@ -12,14 +12,14 @@
     {
       "parameters": {
         "operation": "runFlow",
-        "flowId": "",
+        "flowId": { "__rl": true, "mode": "list", "value": "" },
         "inputs": { "mappingMode": "defineBelow", "value": {} },
         "options": {}
       },
       "id": "browserflow",
       "name": "Browserflow",
       "type": "@browserflow/n8n-nodes-browser-flow.browserflow",
-      "typeVersion": 1,
+      "typeVersion": 1.1,
       "position": [240, 0]
     }
   ],

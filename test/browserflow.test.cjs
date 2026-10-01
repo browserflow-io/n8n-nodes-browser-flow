@@ -58,7 +58,7 @@ function context(
 
 test("standalone node exposes only the new platform and its own OAuth credential", () => {
   assert.equal(node.description.name, "browserflow");
-  assert.equal(node.description.version, 1);
+  assert.deepEqual(node.description.version, [1, 1.1]);
   assert.equal(
     node.description.credentials[0].name,
     "browserflowStudioOAuth2Api",
@@ -280,4 +280,54 @@ test("maps batch options separately from website inputs and rejects invalid wind
     await assert.rejects(node.execute.call(invalid), /must be an integer/);
     assert.equal(invalid.calls.length, 0);
   }
+});
+
+test("new nodes use an on-demand flow picker while existing node versions keep their saved IDs", async () => {
+  const fields = node.description.properties.filter((p) => p.name === "flowId");
+  assert.equal(
+    fields.find((p) => p.displayOptions.show["@version"].includes(1)).type,
+    "options",
+  );
+  const picker = fields.find((p) =>
+    p.displayOptions.show["@version"].includes(1.1),
+  );
+  assert.equal(picker.type, "resourceLocator");
+  assert.equal(picker.typeOptions?.loadOptionsMethod, undefined);
+  assert.equal(picker.modes[0].typeOptions.searchListMethod, "searchFlows");
+  const ctx = context({}, async () => ({
+    flows: [
+      { id: "flow-1", name: "News" },
+      { id: "flow-2", name: "Sales" },
+    ],
+  }));
+  assert.deepEqual(await node.methods.listSearch.searchFlows.call(ctx, "NEW"), {
+    results: [{ name: "News", value: "flow-1" }],
+  });
+  const selected = context({
+    flowId: { __rl: true, mode: "list", value: "flow-1" },
+  });
+  await node.execute.call(selected);
+  assert.match(selected.calls[0].url, /flows\/flow-1\/runs$/);
+  const schema = context(
+    { flowId: { __rl: true, mode: "list", value: "flow-1" } },
+    async () => ({ inputs: { query: { type: "string", required: true } } }),
+  );
+  assert.equal(
+    (await node.methods.resourceMapping.getInputFields.call(schema)).fields[0]
+      .id,
+    "query",
+  );
+  const unselected = context({
+    flowId: { __rl: true, mode: "list", value: "" },
+  });
+  assert.deepEqual(
+    await node.methods.resourceMapping.getInputFields.call(unselected),
+    { fields: [] },
+  );
+  assert.equal(unselected.calls.length, 0);
+  const disconnected = context({ disconnected: true });
+  await assert.rejects(
+    node.methods.listSearch.searchFlows.call(disconnected),
+    /click Connect/,
+  );
 });

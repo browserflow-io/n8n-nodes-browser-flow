@@ -1,3 +1,11 @@
+## On-demand flow picker — 1.1.2
+
+New node version 1.1 uses n8n's searchable resource locator instead of eager
+options loading, which can race automatic credential selection on a new node.
+Existing version-1 nodes keep their saved parameters. Both string IDs and new
+locator values are supported for input schemas and execution. OAuth behavior,
+run admission, Limit/Offset validation and the 100-item cap are unchanged.
+
 # Release preparation
 
 Prepared on 30 September 2026. Package: **@browserflow/n8n-nodes-browser-flow@1.0.0**.

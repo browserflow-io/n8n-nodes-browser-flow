@@ -116,3 +116,12 @@ to every list and remain separate from named flow inputs. Recorded pagination
 and page limits still apply. Each batch starts a fresh replay of all website
 actions, so use batching on flows whose actions you intend to repeat.
 This requires a Browserflow server version with run batching support.
+
+### Flow picker
+
+New nodes use the searchable **Flow → From List** picker. It loads published
+flows when opened, after the stored credential has been selected. This avoids
+the initial-load race between n8n's options loader and automatic credential
+selection. **By ID** is also available. Existing version-1 nodes and saved string
+IDs remain compatible; use **Refresh List** if an older node retains an initial
+fetch error. New nodes use node version 1.1 (package 1.1.2).
