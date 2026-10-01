@@ -243,3 +243,41 @@ test("metadata shows useful connection errors and an empty published-flow hint",
     );
   }
 });
+
+test("maps batch options separately from website inputs and rejects invalid windows", async () => {
+  const ctx = context({ "options.limit": 25, "options.offset": 50 });
+  await node.execute.call(ctx);
+  assert.equal(ctx.calls[0].body.limit, 25);
+  assert.equal(ctx.calls[0].body.offset, 50);
+  assert.equal(ctx.calls[0].body.inputs.limit, 0);
+  const defaults = context();
+  await node.execute.call(defaults);
+  assert.equal(Object.hasOwn(defaults.calls[0].body, "limit"), false);
+  assert.equal(Object.hasOwn(defaults.calls[0].body, "offset"), false);
+  const firstBatch = context({ "options.limit": 5000, "options.offset": 0 });
+  await node.execute.call(firstBatch);
+  assert.deepEqual(firstBatch.calls[0].body, {
+    inputs: { query: "test", enabled: false, limit: 0 },
+    limit: 5000,
+    offset: 0,
+  });
+  const offsetOnly = context({ "options.offset": 250000 });
+  await node.execute.call(offsetOnly);
+  assert.equal(offsetOnly.calls[0].body.offset, 250000);
+  assert.equal(Object.hasOwn(offsetOnly.calls[0].body, "limit"), false);
+  for (const [name, value] of [
+    ["limit", 0],
+    ["limit", 1.5],
+    ["limit", 5001],
+    ["limit", "25"],
+    ["limit", NaN],
+    ["offset", -1],
+    ["offset", 0.5],
+    ["offset", Infinity],
+    ["offset", 250001],
+  ]) {
+    const invalid = context({ [`options.${name}`]: value });
+    await assert.rejects(node.execute.call(invalid), /must be an integer/);
+    assert.equal(invalid.calls.length, 0);
+  }
+});

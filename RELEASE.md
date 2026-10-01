@@ -3,6 +3,16 @@
 Prepared on 30 September 2026. Package: **@browserflow/n8n-nodes-browser-flow@1.0.0**.
 Repository: **browserflow-io/n8n-nodes-browser-flow**. Display name: **Browserflow**.
 
+## List batching — 1.1.0
+
+Version 1.1.0 adds optional **Limit** and **Offset** controls under Options.
+They are forwarded separately from dynamic flow inputs, with integer validation
+(Limit 1–5000, Offset 0–250000). Omitting both preserves existing behavior.
+Each batch repeats the recorded flow; recorded pagination and page limits apply.
+Requires the Browserflow backend release with run batching support. Existing node
+and credential identifiers are unchanged. Publish only the scoped package using
+the guarded workflow; the legacy package remains untouched.
+
 ## Copy update — 1.0.1
 
 Version 1.0.1 changes the node description to “Scrape leads, collect market data,

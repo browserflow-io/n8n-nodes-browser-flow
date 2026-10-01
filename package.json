@@ -1,6 +1,6 @@
 {
   "name": "@browserflow/n8n-nodes-browser-flow",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "Scrape leads, collect market data, and automate sales tasks with Browserflow in n8n.",
   "keywords": [
     "n8n-community-node-package",

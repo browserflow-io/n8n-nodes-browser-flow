@@ -105,3 +105,13 @@ For reproducible integration issues, use this repository's issue tracker.
 Never include credentials, tokens or private website data in a public issue.
 
 MIT. See [LICENSE.md](LICENSE.md).
+
+## List batches
+
+Use **Options → Limit** and **Offset** to request batches. For 100 items at a
+time, set Limit to 100 and use offsets 0, 100, 200, etc. Omit Limit to use the
+recorded list limits; Offset defaults to zero. The controls apply independently
+to every list and remain separate from named flow inputs. Recorded pagination
+and page limits still apply. Each batch starts a fresh replay of all website
+actions, so use batching on flows whose actions you intend to repeat.
+This requires a Browserflow server version with run batching support.

@@ -226,6 +226,23 @@ export class Browserflow implements INodeType {
         placeholder: "Add Option",
         options: [
           {
+            displayName: "Limit",
+            name: "limit",
+            type: "number",
+            default: 50,
+            typeOptions: { minValue: 1, maxValue: 5000, numberPrecision: 0 },
+            description: "Max number of results to return",
+          },
+          {
+            displayName: "Offset",
+            name: "offset",
+            type: "number",
+            default: 0,
+            typeOptions: { minValue: 0, maxValue: 250000, numberPrecision: 0 },
+            description:
+              "Items to skip per list. Use 0, 100, 200 with Limit 100 for successive batches. Recorded pagination and page limits apply; every batch reruns the recorded actions.",
+          },
+          {
             displayName: "Timeout (Seconds)",
             name: "timeout",
             type: "number",
@@ -256,6 +273,26 @@ export class Browserflow implements INodeType {
           i,
           {},
         ) as IDataObject | null;
+        const runWindow: IDataObject = {};
+        for (const [name, min, max] of [
+          ["limit", 1, 5000],
+          ["offset", 0, 250000],
+        ] as const) {
+          const value = this.getNodeParameter(`options.${name}`, i, null);
+          if (value === null || value === undefined) continue;
+          if (
+            typeof value !== "number" ||
+            !Number.isInteger(value) ||
+            value < min ||
+            value > max
+          )
+            throw new NodeOperationError(
+              this.getNode(),
+              `${name} must be an integer between ${min} and ${max}.`,
+              { itemIndex: i },
+            );
+          runWindow[name] = value;
+        }
         const seconds = this.getNodeParameter(
           "options.timeout",
           i,
@@ -290,7 +327,7 @@ export class Browserflow implements INodeType {
           this,
           `/flows/${encodeURIComponent(flowId)}/runs`,
           "POST",
-          { inputs: inputs ?? {} },
+          { inputs: inputs ?? {}, ...runWindow },
           { "Idempotency-Key": idempotencyKey },
         )) as Run;
         while (!["succeeded", "failed"].includes(run.status)) {
