@@ -20,7 +20,7 @@ function context(
     getNode: () => ({
       id: "node-1",
       name: "Browserflow",
-      type: "n8n-nodes-browser-flow.browserflow",
+      type: "@browserflow/n8n-nodes-browser-flow.browserflow",
       typeVersion: 1,
       parameters: {},
     }),

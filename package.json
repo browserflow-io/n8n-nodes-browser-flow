@@ -1,5 +1,5 @@
 {
-  "name": "n8n-nodes-browser-flow",
+  "name": "@browserflow/n8n-nodes-browser-flow",
   "version": "1.0.0",
   "description": "Run your published Browserflow automations from n8n, with dynamic inputs and structured output.",
   "keywords": [

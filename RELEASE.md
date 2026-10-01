@@ -1,6 +1,6 @@
 # Release preparation
 
-Prepared on 30 September 2026. Package: **n8n-nodes-browser-flow@1.0.0**.
+Prepared on 30 September 2026. Package: **@browserflow/n8n-nodes-browser-flow@1.0.0**.
 Repository: **browserflow-io/n8n-nodes-browser-flow**. Display name: **Browserflow**.
 
 ## Evidence and remaining gates
@@ -25,7 +25,7 @@ Repository: **browserflow-io/n8n-nodes-browser-flow**. Display name: **Browserfl
 
 ## Readiness check — 1 October 2026
 
-Only `n8n-nodes-browser-flow` may be published. The workflow explicitly
+Only `@browserflow/n8n-nodes-browser-flow` may be published. The workflow explicitly
 checks both this package name and its standalone repository; the existing
 `n8n-nodes-browserflow` package must not be updated or replaced.
 
@@ -54,8 +54,9 @@ submit the Creator Portal form on his behalf.
   toolchain; do not apply `npm audit fix --force`, which proposes an old CLI
   incompatible with the n8n provenance requirements. The registry scanner and
   hosted registry-package test remain outstanding.
-- The package was renamed locally on 1 October to `n8n-nodes-browser-flow`
-  at Raf's request. The GitHub repository was then renamed to
+- The package was renamed on 1 October to `@browserflow/n8n-nodes-browser-flow`
+  with Raf's approval after npm rejected the unscoped name as too similar
+  to the legacy package. The GitHub repository was renamed to
   `browserflow-io/n8n-nodes-browser-flow`, with package links and the release
   identity guard updated together. Earlier CI and archive evidence
   describes the pre-rename candidate; use the rebuilt candidate and rerun CI
@@ -96,7 +97,7 @@ version with 2FA. Do not broaden token scope or bypass 2FA without owner approva
    against the exact GitHub workflow/commit. Then run:
 
    ```sh
-   npm exec --ignore-scripts --yes --package=@n8n/scan-community-package@0.38.0 -- scan-community-package n8n-nodes-browser-flow@1.0.0
+   npm exec --ignore-scripts --yes --package=@n8n/scan-community-package@0.38.0 -- scan-community-package @browserflow/n8n-nodes-browser-flow@1.0.0
    ```
 
    The scanner requires a published npm package. Read the actual result; its
@@ -120,7 +121,7 @@ Use after npm publication and the remaining checks above. Do not claim n8n has
 already approved the split or that private-preview access is public.
 
 > We would like to submit Browserflow for the current browserflow.io platform.
-> Package: n8n-nodes-browser-flow. Source:
+> Package: @browserflow/n8n-nodes-browser-flow. Source:
 > https://github.com/browserflow-io/n8n-nodes-browser-flow.
 >
 > This integration lets users connect their Browserflow account with OAuth2 PKCE,

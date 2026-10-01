@@ -1,5 +1,5 @@
 {
-  "node": "n8n-nodes-browser-flow.browserflow",
+  "node": "@browserflow/n8n-nodes-browser-flow.browserflow",
   "nodeVersion": "1.0",
   "codexVersion": "1.0",
   "categories": ["Productivity"],
