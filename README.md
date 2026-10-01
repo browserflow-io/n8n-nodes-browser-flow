@@ -95,7 +95,7 @@ server code and legacy nodes from publication.
 
 Releases use this repository's manually triggered **Publish Browserflow plugin**
 GitHub Actions workflow. The requested version must match `package.json` and
-must not exist on npm. See [release preparation](https://github.com/browserflow-io/n8n-nodes-browserflow-studio/blob/main/RELEASE.md).
+must not exist on npm. See [release preparation](https://github.com/browserflow-io/n8n-nodes-browser-flow/blob/main/RELEASE.md).
 
 ## Support and license
 

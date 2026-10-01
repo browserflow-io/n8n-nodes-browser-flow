@@ -1,7 +1,7 @@
 # Release preparation
 
 Prepared on 30 September 2026. Package: **n8n-nodes-browser-flow@1.0.0**.
-Repository: **browserflow-io/n8n-nodes-browserflow-studio**. Display name: **Browserflow**.
+Repository: **browserflow-io/n8n-nodes-browser-flow**. Display name: **Browserflow**.
 
 ## Evidence and remaining gates
 
@@ -55,19 +55,20 @@ submit the Creator Portal form on his behalf.
   incompatible with the n8n provenance requirements. The registry scanner and
   hosted registry-package test remain outstanding.
 - The package was renamed locally on 1 October to `n8n-nodes-browser-flow`
-  at Raf's request. The GitHub repository remains
-  `browserflow-io/n8n-nodes-browserflow-studio`. Earlier CI and archive evidence
+  at Raf's request. The GitHub repository was then renamed to
+  `browserflow-io/n8n-nodes-browser-flow`, with package links and the release
+  identity guard updated together. Earlier CI and archive evidence
   describes the pre-rename candidate; use the rebuilt candidate and rerun CI
   before publication. The old archive digest is superseded.
 - The renamed candidate passed all nine tests, strict lint, the package boundary
   check and a fresh installed-package acceptance test (PKCE, typed browser output,
   refresh, revocation). npm returned 404 for the new package name on 1 October;
   recheck availability at publication time.
-- Renamed inspection archive: `n8n-nodes-browser-flow-1.0.0.tgz`, 13 files,
-  11,057 bytes. SHA-256:
-  `70b6f0005ee1c137f20ebd1c7802e369d65f44d1a07e2578e06a86351fe04a73`.
+- The prior inspection archive is superseded by the repository URL changes.
+  Inspect the final CI-built registry archive after publication.
 - The npm account now confirms 2FA enabled for authorization and publishing.
-  GitHub publication credentials still need to be configured by the owner.
+  The owner configured `NPM_TOKEN` in GitHub Actions; its presence was verified
+  without reading the value. The publication workflow must verify that it works.
 
 The owner should arrange a short-lived bootstrap publication
 credential directly in GitHub Actions as `NPM_TOKEN`, never in chat. The current
@@ -104,7 +105,7 @@ version with 2FA. Do not broaden token scope or bypass 2FA without owner approva
 
 6. Install that registry version in a disposable self-hosted n8n and verify a
    hosted test account connection/run. Add npm Trusted Publishing with owner
-   `browserflow-io`, repository `n8n-nodes-browserflow-studio`, workflow
+   `browserflow-io`, repository `n8n-nodes-browser-flow`, workflow
    `publish.yml`, environment `npm`. Revoke the bootstrap token after setup.
 7. Submit through the Creator Portal only after Raf finishes coordination and
    authorizes submission. Use the prepared text below and current evidence.
@@ -120,7 +121,7 @@ already approved the split or that private-preview access is public.
 
 > We would like to submit Browserflow for the current browserflow.io platform.
 > Package: n8n-nodes-browser-flow. Source:
-> https://github.com/browserflow-io/n8n-nodes-browserflow-studio.
+> https://github.com/browserflow-io/n8n-nodes-browser-flow.
 >
 > This integration lets users connect their Browserflow account with OAuth2 PKCE,
 > choose a published browser automation, map its typed inputs and receive

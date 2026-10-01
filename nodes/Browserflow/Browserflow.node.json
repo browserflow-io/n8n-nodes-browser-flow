@@ -6,12 +6,12 @@
   "resources": {
     "credentialDocumentation": [
       {
-        "url": "https://github.com/browserflow-io/n8n-nodes-browserflow-studio#credentials"
+        "url": "https://github.com/browserflow-io/n8n-nodes-browser-flow#credentials"
       }
     ],
     "primaryDocumentation": [
       {
-        "url": "https://github.com/browserflow-io/n8n-nodes-browserflow-studio"
+        "url": "https://github.com/browserflow-io/n8n-nodes-browser-flow"
       }
     ]
   }

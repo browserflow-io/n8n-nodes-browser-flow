@@ -9,14 +9,14 @@
     "scraping"
   ],
   "license": "MIT",
-  "homepage": "https://github.com/browserflow-io/n8n-nodes-browserflow-studio#readme",
+  "homepage": "https://github.com/browserflow-io/n8n-nodes-browser-flow#readme",
   "author": {
     "name": "Browserflow",
     "email": "hello@browserflow.io"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/browserflow-io/n8n-nodes-browserflow-studio.git"
+    "url": "git+https://github.com/browserflow-io/n8n-nodes-browser-flow.git"
   },
   "engines": {
     "node": ">=22.16"
@@ -55,7 +55,7 @@
     "n8n-workflow": "*"
   },
   "bugs": {
-    "url": "https://github.com/browserflow-io/n8n-nodes-browserflow-studio/issues"
+    "url": "https://github.com/browserflow-io/n8n-nodes-browser-flow/issues"
   },
   "publishConfig": {
     "access": "public"
