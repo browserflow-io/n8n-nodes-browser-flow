@@ -282,6 +282,32 @@ test("maps batch options separately from website inputs and rejects invalid wind
   }
 });
 
+test("input schema reloads when the selected flow changes for both node versions", () => {
+  const mappers = node.description.properties.filter(
+    (p) => p.name === "inputs",
+  );
+  for (const [version, empty, selected, expected] of [
+    [1, "", "flow-1", "flowId"],
+    [
+      1.1,
+      { mode: "list", value: "" },
+      { mode: "list", value: "flow-1" },
+      "flowId.value",
+    ],
+  ]) {
+    const mapper = mappers.find((p) =>
+      p.displayOptions.show["@version"].includes(version),
+    );
+    assert.deepEqual(mapper.typeOptions.loadOptionsDependsOn, [expected]);
+    const dependency = mapper.typeOptions.loadOptionsDependsOn[0];
+    const read = (value) =>
+      dependency.split(".").reduce((o, key) => o?.[key], { flowId: value });
+    assert.equal(read(empty), "");
+    assert.equal(read(selected), "flow-1");
+    assert.notEqual(String(read(empty)), String(read(selected)));
+  }
+});
+
 test("new nodes use an on-demand flow picker while existing node versions keep their saved IDs", async () => {
   const fields = node.description.properties.filter((p) => p.name === "flowId");
   assert.equal(

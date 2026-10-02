@@ -124,4 +124,7 @@ flows when opened, after the stored credential has been selected. This avoids
 the initial-load race between n8n's options loader and automatic credential
 selection. **By ID** is also available. Existing version-1 nodes and saved string
 IDs remain compatible; use **Refresh List** if an older node retains an initial
-fetch error. New nodes use node version 1.1 (package 1.1.2).
+fetch error. New nodes use node version 1.1. Package 1.1.3 refreshes the input
+fields immediately when selecting a flow, including the first selection in a
+new node; reopening the workflow is not required. Existing version-1 nodes keep
+their original field dependency and saved mappings.

@@ -11,6 +11,7 @@ import type {
   ILoadOptionsFunctions,
   INodeExecutionData,
   INodeType,
+  INodeProperties,
   INodeTypeDescription,
   INodeListSearchResult,
   JsonObject,
@@ -260,24 +261,27 @@ export class Browserflow implements INodeType {
         ],
         description: "Published Browserflow flow to run",
       },
-      {
-        displayName: "Inputs",
-        name: "inputs",
-        type: "resourceMapper",
-        noDataExpression: true,
-        default: { mappingMode: "defineBelow", value: null },
-        typeOptions: {
-          loadOptionsDependsOn: ["flowId"],
-          resourceMapper: {
-            resourceMapperMethod: "getInputFields",
-            mode: "add",
-            valuesLabel: "Inputs",
-            supportAutoMap: false,
-            fieldWords: { singular: "input", plural: "inputs" },
-            addAllFields: true,
+      ...[1, 1.1].map(
+        (version): INodeProperties => ({
+          displayName: "Inputs",
+          name: "inputs",
+          type: "resourceMapper",
+          noDataExpression: true,
+          displayOptions: { show: { "@version": [version] } },
+          default: { mappingMode: "defineBelow", value: null },
+          typeOptions: {
+            loadOptionsDependsOn: [version === 1 ? "flowId" : "flowId.value"],
+            resourceMapper: {
+              resourceMapperMethod: "getInputFields",
+              mode: "add",
+              valuesLabel: "Inputs",
+              supportAutoMap: false,
+              fieldWords: { singular: "input", plural: "inputs" },
+              addAllFields: true,
+            },
           },
-        },
-      },
+        }),
+      ),
       {
         displayName: "Options",
         name: "options",
