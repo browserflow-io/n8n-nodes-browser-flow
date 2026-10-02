@@ -2,7 +2,7 @@
 
 The active package is `@browserflow/n8n-nodes-browserflow-growth-automation`.
 The repository is `browserflow-io/n8n-nodes-browserflow-growth-automation`.
-The node displays **Browserflow Growth Automation**. It retains version 1/1.1
+The node displays **Browserflow for Growth Automation**. It retains version 1/1.1
 parameters, the existing OAuth credential type, batching and the input refresh fix.
 The former scoped package remains available for existing workflows. To migrate,
 replace its node with the new package and reuse the existing credential and inputs;

@@ -1,4 +1,4 @@
-# Browserflow Growth Automation for n8n
+# Browserflow for Growth Automation
 
 Scrape leads, collect market data, and automate sales tasks with Browserflow.
 Run your published browser flows from n8n and use their structured results in
@@ -9,7 +9,7 @@ This package connects to the current Browserflow platform at
 `n8n-nodes-browserflow` package for the earlier platform and LinkedIn operations.
 It does not replace or migrate those nodes or credentials.
 
-Package: `@browserflow/n8n-nodes-browserflow-growth-automation`. The node appears as **Browserflow Growth Automation**.
+Package: `@browserflow/n8n-nodes-browserflow-growth-automation`. The node appears as **Browserflow for Growth Automation**.
 The package is published on npm. n8n verification is pending; availability in
 n8n Cloud is not yet established.
 
