@@ -1,17 +1,17 @@
 {
-  "node": "@browserflow/n8n-nodes-browser-flow.browserflow",
+  "node": "@browserflow/n8n-nodes-browserflow-growth-automation.browserflow",
   "nodeVersion": "1.0",
   "codexVersion": "1.0",
   "categories": ["Productivity"],
   "resources": {
     "credentialDocumentation": [
       {
-        "url": "https://github.com/browserflow-io/n8n-nodes-browser-flow#credentials"
+        "url": "https://github.com/browserflow-io/n8n-nodes-browserflow-growth-automation#credentials"
       }
     ],
     "primaryDocumentation": [
       {
-        "url": "https://github.com/browserflow-io/n8n-nodes-browser-flow"
+        "url": "https://github.com/browserflow-io/n8n-nodes-browserflow-growth-automation"
       }
     ]
   }

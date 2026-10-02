@@ -18,7 +18,7 @@
       },
       "id": "browserflow",
       "name": "Browserflow",
-      "type": "@browserflow/n8n-nodes-browser-flow.browserflow",
+      "type": "@browserflow/n8n-nodes-browserflow-growth-automation.browserflow",
       "typeVersion": 1.1,
       "position": [240, 0]
     }

@@ -200,14 +200,14 @@ async function getInputFields(
 export class Browserflow implements INodeType {
   description: INodeTypeDescription = {
     usableAsTool: true,
-    displayName: "Browserflow",
+    displayName: "Browserflow Growth Automation",
     name: "browserflow",
     icon: { light: "file:browserflow.svg", dark: "file:browserflow.dark.svg" },
     group: ["transform"],
     version: [1, 1.1],
     description: "Scrape leads, collect market data, and automate sales tasks",
     subtitle: "Run Flow",
-    defaults: { name: "Browserflow" },
+    defaults: { name: "Browserflow Growth Automation" },
     inputs: [NodeConnectionTypes.Main],
     outputs: [NodeConnectionTypes.Main],
     credentials: [{ name: "browserflowStudioOAuth2Api", required: true }],

@@ -9,7 +9,7 @@ const [packed] = JSON.parse(
   }),
 );
 const files = new Set(packed.files.map(({ path }) => path));
-assert.equal(pkg.name, "@browserflow/n8n-nodes-browser-flow");
+assert.equal(pkg.name, "@browserflow/n8n-nodes-browserflow-growth-automation");
 assert.equal(pkg.license, "MIT");
 assert.equal(pkg.n8n.strict, true);
 assert.equal(Object.keys(pkg.dependencies ?? {}).length, 0);
@@ -40,7 +40,8 @@ assert.equal(example.active, false);
 assert.ok(example.nodes.every((node) => !node.credentials));
 assert.ok(
   example.nodes.some(
-    (node) => node.type === `${pkg.name}.browserflow` && node.typeVersion === 1.1,
+    (node) =>
+      node.type === `${pkg.name}.browserflow` && node.typeVersion === 1.1,
   ),
 );
 console.log(

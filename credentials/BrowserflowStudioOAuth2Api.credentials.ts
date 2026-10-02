@@ -10,7 +10,7 @@ export class BrowserflowStudioOAuth2Api implements ICredentialType {
   displayName = "Browserflow OAuth2 API";
   icon = "file:../nodes/Browserflow/browserflow.svg" as const;
   documentationUrl =
-    "https://github.com/browserflow-io/n8n-nodes-browser-flow#credentials";
+    "https://github.com/browserflow-io/n8n-nodes-browserflow-growth-automation#credentials";
   properties: INodeProperties[] = [
     {
       displayName: "Allowed HTTP Request Domains",

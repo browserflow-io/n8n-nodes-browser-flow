@@ -1,3 +1,16 @@
+# Package rename — 1.1.4
+
+The active package is `@browserflow/n8n-nodes-browserflow-growth-automation`.
+The repository is `browserflow-io/n8n-nodes-browserflow-growth-automation`.
+The node displays **Browserflow Growth Automation**. It retains version 1/1.1
+parameters, the existing OAuth credential type, batching and the input refresh fix.
+The former scoped package remains available for existing workflows. To migrate,
+replace its node with the new package and reuse the existing credential and inputs;
+saved node type identifiers contain the package name and are not renamed automatically.
+Use the new package and repository for Creator Portal submission.
+
+The notes below describe earlier releases under the former name.
+
 ## On-demand flow picker — 1.1.2
 
 New node version 1.1 uses n8n's searchable resource locator instead of eager

@@ -1,4 +1,4 @@
-# Browserflow for n8n
+# Browserflow Growth Automation for n8n
 
 Scrape leads, collect market data, and automate sales tasks with Browserflow.
 Run your published browser flows from n8n and use their structured results in
@@ -9,7 +9,7 @@ This package connects to the current Browserflow platform at
 `n8n-nodes-browserflow` package for the earlier platform and LinkedIn operations.
 It does not replace or migrate those nodes or credentials.
 
-Package: `@browserflow/n8n-nodes-browser-flow`. The node appears as **Browserflow**.
+Package: `@browserflow/n8n-nodes-browserflow-growth-automation`. The node appears as **Browserflow Growth Automation**.
 The package is published on npm. n8n verification is pending; availability in
 n8n Cloud is not yet established.
 
@@ -25,7 +25,7 @@ n8n Cloud is not yet established.
 
 ## Install
 
-Install `@browserflow/n8n-nodes-browser-flow` through
+Install `@browserflow/n8n-nodes-browserflow-growth-automation` through
 **Settings → Community Nodes** on self-hosted n8n. For development, run
 `npm ci` and `npm run dev` from this repository.
 
@@ -96,7 +96,7 @@ server code and legacy nodes from publication.
 
 Releases use this repository's manually triggered **Publish Browserflow plugin**
 GitHub Actions workflow. The requested version must match `package.json` and
-must not exist on npm. See [release preparation](https://github.com/browserflow-io/n8n-nodes-browser-flow/blob/main/RELEASE.md).
+must not exist on npm. See [release preparation](https://github.com/browserflow-io/n8n-nodes-browserflow-growth-automation/blob/main/RELEASE.md).
 
 ## Support and license
 
